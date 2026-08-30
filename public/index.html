@@ -1,1 +1,23 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Imagination</title><link rel="stylesheet" href="/style.css"><script src="/scram/scramjet.all.js"></script><script src="/baremux/index.js"></script><script src="/register-sw.js" defer></script><script src="/search.js" defer></script><script src="/app.js" defer></script></head><body><main><h1>Imagination</h1><p class="sub">Search or enter a URL</p><form id="proxy-form"><input id="address" autocomplete="off" autofocus placeholder="Search the web or enter a URL"><button>Go</button></form><p id="status"></p><div id="browser"></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Imagination</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <h1>Imagination</h1>
+    <p class="sub">Search the web or enter a URL</p>
+    <form id="proxy-form" autocomplete="off">
+      <input id="address" name="address" autofocus placeholder="Search or enter a URL">
+      <button type="submit">Go</button>
+    </form>
+    <p id="status" role="status"></p>
+    <div id="browser"></div>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
