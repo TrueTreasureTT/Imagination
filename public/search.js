@@ -1,0 +1,1 @@
+function search(input){input=input.trim();try{return new URL(input).toString()}catch{}try{const u=new URL("https://"+input);if(u.hostname.includes("."))return u.toString()}catch{}return "https://www.google.com/search?q="+encodeURIComponent(input)}
