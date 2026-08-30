@@ -286,5 +286,13 @@ window.imagination = {
   }
 };
 
+document.querySelectorAll("[data-url]").forEach((button) => {
+  button.addEventListener("click", () => {
+    navigate(button.dataset.url).catch((error) => {
+      setStatus(formatError(error), "error");
+    });
+  });
+});
+
 updateNavigationButtons();
 setStatus("Ready");
