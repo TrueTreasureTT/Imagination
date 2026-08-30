@@ -1,10 +1,43 @@
-export function resolveAddress(value){
-  const input=(value||"").trim();
-  if(!input) return "";
-  try{return new URL(input).href}catch{}
-  if(!/\s/.test(input)&&(/^(localhost|\d{1,3}(?:\.\d{1,3}){3})(:\d+)?(\/|$)/.test(input)||input.includes("."))){
-    return new URL("https://"+input).href;
-  }
-  return "https://www.google.com/search?q="+encodeURIComponent(input);
+const SEARCH_ENGINE = "https://www.google.com/search?q=";
+
+export function normalizeInput(value) {
+  return String(value ?? "").trim();
 }
-window.resolveAddress=resolveAddress;
+
+export function isLikelyUrl(value) {
+  if (!value || /\s/.test(value)) return false;
+  return /^(https?:\/\/|localhost(?::\d+)?(?:\/|$)|\d{1,3}(?:\.\d{1,3}){3}(?::\d+)?(?:\/|$)|[^/]+\.[^/]+(?:\/.*)?$)/i.test(value);
+}
+
+export function resolveAddress(value) {
+  const input = normalizeInput(value);
+  if (!input) return "";
+
+  try {
+    const url = new URL(input);
+    if (url.protocol === "http:" || url.protocol === "https:") return url.href;
+  } catch {}
+
+  if (isLikelyUrl(input)) {
+    try {
+      return new URL("https://" + input).href;
+    } catch {}
+  }
+
+  return SEARCH_ENGINE + encodeURIComponent(input);
+}
+
+export function getDisplayAddress(value) {
+  try {
+    const url = new URL(value);
+    return url.href;
+  } catch {
+    return value;
+  }
+}
+
+export function isSearch(value) {
+  return !isLikelyUrl(normalizeInput(value));
+}
+
+window.resolveAddress = resolveAddress;
