@@ -2,24 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
   <meta name="theme-color" content="#111827">
+  <meta
+    name="description"
+    content="Imagination web application"
+  >
   <title>Imagination</title>
+
   <link rel="stylesheet" href="/style.css">
+
   <script src="/baremux/index.js"></script>
   <script src="/scram/scramjet.all.js"></script>
 </head>
 <body>
-  <main>
-    <h1>Imagination</h1>
-    <p class="sub">Search the web or enter a URL</p>
-    <form id="proxy-form" autocomplete="off">
-      <input id="address" name="address" autofocus placeholder="Search or enter a URL">
-      <button type="submit">Go</button>
-    </form>
-    <p id="status" role="status"></p>
-    <div id="browser"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Imagination</h1>
+        <span class="brand-status">Scramjet</span>
+      </div>
+
+      <nav class="browser-controls" aria-label="Browser controls">
+        <button id="back" type="button" disabled title="Back">
+          ←
+        </button>
+
+        <button id="forward" type="button" disabled title="Forward">
+          →
+        </button>
+
+        <button id="reload" type="button" title="Reload">
+          ↻
+        </button>
+
+        <button id="home" type="button" title="Home">
+          ⌂
+        </button>
+      </nav>
+
+      <form id="proxy-form" autocomplete="off">
+        <div class="address-wrap">
+          <input
+            id="address"
+            name="address"
+            autofocus
+            spellcheck="false"
+            placeholder="Search the web or enter a URL"
+            aria-label="Address"
+          >
+
+          <div
+            id="suggestions"
+            class="suggestions"
+            hidden
+          ></div>
+        </div>
+
+        <button class="go-button" type="submit">
+          Go
+        </button>
+      </form>
+
+      <div class="utility-controls">
+        <button id="history" type="button">
+          History
+        </button>
+      </div>
+    </header>
+
+    <section class="status-row">
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <aside id="history-panel" hidden>
+      <div class="history-header">
+        <strong>History</strong>
+        <button id="clear-history" type="button">
+          Clear
+        </button>
+      </div>
+    </aside>
+
+    <section
+      id="browser"
+      class="browser"
+      aria-label="Browser content"
+    >
+      <div class="welcome">
+        <h2>Ready to explore</h2>
+        <p>
+          Enter a web address or a search query above.
+        </p>
+
+        <div class="quick-actions">
+          <button type="button" data-url="https://example.com">
+            Example
+          </button>
+          <button
+            type="button"
+            data-url="https://www.google.com/search?q=hello"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </section>
   </main>
+
   <script type="module" src="/app.js"></script>
 </body>
 </html>
