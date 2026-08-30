@@ -1,0 +1,5 @@
+module.exports={
+  "editor.formatOnSave":true,
+  "editor.tabSize":2,
+  "files.exclude":{"**/node_modules":true}
+};
