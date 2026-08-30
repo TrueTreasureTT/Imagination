@@ -1,0 +1,14 @@
+{
+  "server": { "host": "0.0.0.0", "port": 8080, "trustProxy": true },
+  "runtime": {
+    "scramjetPrefix": "/scram/",
+    "baremuxPrefix": "/baremux/",
+    "libcurlPrefix": "/libcurl/",
+    "wispPath": "/wisp/"
+  },
+  "security": {
+    "allowPrivateIps": false,
+    "allowLoopbackIps": false,
+    "logLevel": "warn"
+  }
+}
