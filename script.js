@@ -1,3 +1,2 @@
-// Browser entry point for simple static hosts.
-// The main application logic lives in public/app.js.
-import "/app.js";
+// Root browser bootstrap. Keeps compatibility with hosts expecting /script.js.
+import "/public/app.js";
